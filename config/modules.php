@@ -7,10 +7,10 @@
 return [
     'user' => true,
     'user_verify' => true,
-    'user_mobile_verify' => true,
-    'notification' => false,
+    'user_mobile_verify' => false,
+    'notification' => true,
     'content' => true,
-    'support' => true,
-    'wallet' => true,
+    'support' => false,
+    'wallet' => false,
     'shop' => false,
 ];

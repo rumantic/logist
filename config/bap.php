@@ -12,7 +12,7 @@ return [
     'default-country' => 105,
 
     'home' => [
-        'display-carousels' => 1,
+        'display-carousels' => 0,
         'count-carousels' => 5,
         'display-articles' => 1,
         'count-articles' => 5,
