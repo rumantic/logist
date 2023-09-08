@@ -28,14 +28,51 @@ class OrderTable extends DataTableComponent
         return [
             Column::make("Id", "id")
                 ->sortable(),
+            Column::make("Номер вагона", "id")
+                ->format(function ($value) {
+                    return view('livewire.panel.order.fake')
+                        ->with('title', 123);
+                }),
+            Column::make("Дата отправления вагона", "id")
+                ->format(function ($value) {
+                    return view('livewire.panel.order.fake')
+                        ->with('title', '20.09.2023');
+                }),
+            Column::make("Статус", "id")
+                ->format(function ($value) {
+                    return view('livewire.panel.order.fake')
+                        ->with('title', 'в пути');
+                }),
             Column::make(__('bap.station_start'), "station_start")
                 ->sortable(),
             Column::make(__('bap.station_end'), "station_end")
                 ->sortable(),
+            Column::make("Статус операции", "id")
+                ->format(function ($value) {
+                    return view('livewire.panel.order.fake')
+                        ->with('title', 'ожидает оплаты');
+                }),
+            Column::make("Цена перевозки", "id")
+                ->format(function ($value) {
+                    return view('livewire.panel.order.fake')
+                        ->with('title', '2 500 000');
+                }),
+            Column::make("Оплата", "id")
+                ->format(function ($value) {
+                    return view('livewire.panel.order.fake')
+                        ->with('title', '500 000');
+                }),
+            Column::make("Наличие простоя", "id")
+                ->format(function ($value) {
+                    return view('livewire.panel.order.fake')
+                        ->with('title', 'нет');
+                }),
+            /*
             Column::make("Created at", "created_at")
                 ->sortable(),
             Column::make("Updated at", "updated_at")
                 ->sortable(),
+            */
             Column::make("actions", "id")
                 ->format(function ($value) {
                     return view('livewire.panel.order.actions')
