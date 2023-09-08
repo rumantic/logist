@@ -62,6 +62,7 @@
                     @endif
                     @includeIf('layouts.custom.panel')
 
+                    @if(config('modules.support'))
                         <li class="nav-item dropdown @if(\Illuminate\Support\Facades\Route::is('panel.support.*')) show active @endif">
                             <a class="nav-link dropdown-toggle" href="#navbar-support" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="true">
                                   <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -73,16 +74,17 @@
                             </a>
                             <div class="dropdown-menu @if(\Illuminate\Support\Facades\Route::is('panel.support.*')) show @endif " data-bs-popper="none">
 
-                                    <a class="dropdown-item @if(\Illuminate\Support\Facades\Route::is('panel.support.ticket.index')) active @endif @if(\Illuminate\Support\Facades\Route::is('panel.support.ticket.view')) active @endif" href="{{ route('panel.support.ticket.index') }}">
-                                        {{ __('bap.tickets') }}
-                                    </a>
+                                <a class="dropdown-item @if(\Illuminate\Support\Facades\Route::is('panel.support.ticket.index')) active @endif @if(\Illuminate\Support\Facades\Route::is('panel.support.ticket.view')) active @endif" href="{{ route('panel.support.ticket.index') }}">
+                                    {{ __('bap.tickets') }}
+                                </a>
 
-                                    <a class="dropdown-item @if(\Illuminate\Support\Facades\Route::is('panel.support.ticket.create')) active @endif" href="{{ route('panel.support.ticket.create') }}">
-                                        {{ __('bap.create_ticket') }}
-                                    </a>
+                                <a class="dropdown-item @if(\Illuminate\Support\Facades\Route::is('panel.support.ticket.create')) active @endif" href="{{ route('panel.support.ticket.create') }}">
+                                    {{ __('bap.create_ticket') }}
+                                </a>
 
                             </div>
                         </li>
+                    @endif
 
                 </ul>
             </div>
