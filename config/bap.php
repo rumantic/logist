@@ -1,9 +1,9 @@
 <?php
 return [
-    'name' => 'Bootstrap Admin Panel',
+    'name' => 'Logist',
     'container-app' => 'container',
-    'container-panel' => 'container-fluid',
-    'container-admin' => 'container-fluid',
+    'container-panel' => 'container',
+    'container-admin' => 'container',
     'admin-prefix-url' => 'admin',
     'panel-prefix-url' => 'panel',
     'per-page' => 15,
