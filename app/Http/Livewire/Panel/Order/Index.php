@@ -26,8 +26,6 @@ class Index extends Component
     protected $queryString = ['search'];
 
     protected $listeners = [
-        'confirmedDeleteOrder',
-        'cancelledDeleteOrder',
         'deleteSelectedQuery',
         'updateList' => 'render'
     ];
@@ -52,43 +50,6 @@ class Index extends Component
         }
     }
 
-    public function delete(Order $article)
-    {
-        if(!auth()->user()->can('admin_order_delete')) {
-            return abort(403);
-        }
-        $this->confirm(__('bap.are_you_sure'), [
-            'toast' => false,
-            'position' => 'center',
-            'showConfirmButton' => true,
-            'cancelButtonText' => __('bap.cancel'),
-            'onConfirmed' => 'confirmedDeleteOrder',
-            'onCancelled' => 'cancelledDeleteOrder'
-        ]);
-        $this->article = $article;
-    }
-
-
-    public function confirmedDeleteOrder()
-    {
-        if(!auth()->user()->can('admin_order_delete')) {
-            return abort(403);
-        }
-        $this->article->delete();
-        $this->emit('updateList');
-        $this->alert(
-            'success',
-            __('bap.removed')
-        );
-    }
-
-    public function cancelledDeleteOrder()
-    {
-        $this->alert(
-            'success',
-            __('bap.cancelled')
-        );
-    }
 
     public function mount()
     {
