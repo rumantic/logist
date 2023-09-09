@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Panel\Order;
 
 use App\Models\Order;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use Rappasoft\LaravelLivewireTables\Views\Columns\ButtonGroupColumn;
-use Rappasoft\LaravelLivewireTables\Views\Columns\LinkColumn;
 
 class OrderTable extends DataTableComponent
 {
@@ -15,6 +13,7 @@ class OrderTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id');
+        $this->setDefaultReorderSort('id', 'desc');
         $this->setTdAttributes(function(Column $column, $row, $columnIndex, $rowIndex) {
             return [
                 'default' => true,

@@ -47,7 +47,8 @@ class Create extends Component
 
     public function render()
     {
-        $categories = Category::where('type', 'article')->get();
-        return view('livewire.panel.order.create', compact('categories'));
+        $form = new OrderForm();
+        $form_shape = $form->get();
+        return view('livewire.panel.order.create', compact('form_shape'));
     }
 }

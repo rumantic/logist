@@ -16,13 +16,16 @@ class Edit extends Component
     public $station_start;
     public $station_end;
     private $order;
+    private $_id;
 
-    public function mount(Order $order)
+    public function mount($id)
     {
-        $this->order = $order;
-        $this->station_start = $order->station_start;
-        $this->station_end = $order->station_end;
-        $this->description = $order->description;
+        $this->_id = $id;
+
+        $this->order = Order::where('id', $id)->first();
+        $this->station_start = $this->order->station_start;
+        $this->station_end = $this->order->station_end;
+        $this->description = $this->order->description;
     }
 
     public function edit()
@@ -38,6 +41,7 @@ class Edit extends Component
         ]);
 
         $order = $this->order;
+        // dd($order);
 
         $order->station_start = $this->station_start;
         $order->station_end = $this->station_end;
@@ -52,7 +56,8 @@ class Edit extends Component
 
     public function render()
     {
-        $categories = Category::where('type', 'article')->get();
-        return view('livewire.panel.order.edit', compact('categories'));
+        $form = new OrderForm();
+        $form_shape = $form->get();
+        return view('livewire.panel.order.edit', compact('form_shape'));
     }
 }
