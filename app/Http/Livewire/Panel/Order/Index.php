@@ -15,7 +15,7 @@ class Index extends Component
     public $selectedItems = [];
     public $selectAll = false;
 
-    public $article;
+    public Order $order;
     public $search;
     public $perPage = 15;
     public $sortColumn = 'created_at';
@@ -92,6 +92,7 @@ class Index extends Component
 
     public function mount()
     {
+        $this->order = new Order();
         $this->search = request()->query('search', $this->search);
     }
 

@@ -15,13 +15,10 @@ class Edit extends Component
     public $description;
     public $station_start;
     public $station_end;
-    private $order;
-    private $_id;
+    public Order $order;
 
     public function mount($id)
     {
-        $this->_id = $id;
-
         $this->order = Order::where('id', $id)->first();
         $this->station_start = $this->order->station_start;
         $this->station_end = $this->order->station_end;
@@ -41,7 +38,6 @@ class Edit extends Component
         ]);
 
         $order = $this->order;
-        // dd($order);
 
         $order->station_start = $this->station_start;
         $order->station_end = $this->station_end;

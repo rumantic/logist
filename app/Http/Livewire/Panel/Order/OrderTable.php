@@ -73,9 +73,10 @@ class OrderTable extends DataTableComponent
                 ->sortable(),
             */
             Column::make("actions", "id")
-                ->format(function ($value) {
+                ->format(function ($value, $row) {
                     return view('livewire.panel.order.actions')
-                        ->with('id', $value);
+                        ->with('id', $value)
+                        ->with('order', $row);
                 }),
 /*
             ButtonGroupColumn::make('Actions')
