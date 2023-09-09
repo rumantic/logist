@@ -24,6 +24,6 @@
         </ol>
     </x-slot>
 
-    <livewire:order-table />
+    <livewire:panel.order.order-table />
 
 </div>
