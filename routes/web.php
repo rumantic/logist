@@ -92,4 +92,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['re
 
 });
 
+if ( config('fortify.login_email_confirm') ) {
+    require_once __DIR__.'/fortify/routes.php';
+}
+
 

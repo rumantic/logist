@@ -142,4 +142,6 @@ return [
         ]),
     ],
 
+    'login_email_confirm' => true,
+
 ];

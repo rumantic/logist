@@ -21,7 +21,9 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ( config('fortify.login_email_confirm') ) {
+            Fortify::ignoreRoutes();
+        }
     }
 
     /**

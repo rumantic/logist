@@ -2,8 +2,14 @@
 
 namespace App\Providers;
 
+use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatableCustom;
 use App\Actions\Jetstream\DeleteUser;
+use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Fortify\Actions\AttemptToAuthenticate;
+use Laravel\Fortify\Actions\EnsureLoginIsNotThrottled;
+use Laravel\Fortify\Actions\PrepareAuthenticatedSession;
+use Laravel\Fortify\Fortify;
 use Laravel\Jetstream\Jetstream;
 
 class JetstreamServiceProvider extends ServiceProvider
@@ -28,6 +34,17 @@ class JetstreamServiceProvider extends ServiceProvider
         $this->configurePermissions();
 
         Jetstream::deleteUsersUsing(DeleteUser::class);
+
+        if ( config('fortify.login_email_confirm') ) {
+            Fortify::authenticateThrough(function (Request $request) {
+                return array_filter([
+                    config('fortify.limiters.login') ? null : EnsureLoginIsNotThrottled::class,
+                    RedirectIfTwoFactorAuthenticatableCustom::class,
+                    AttemptToAuthenticate::class,
+                    PrepareAuthenticatedSession::class,
+                ]);
+            });
+        }
     }
 
     /**
