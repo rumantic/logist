@@ -7,12 +7,18 @@
         <div class="card-body">
             <div x-data="{ recovery: false }">
                 <div class="mb-3" x-show="! recovery">
-                    {{ __('Please confirm access to your account by entering the authentication code provided by your authenticator application.') }}
+                    @if(config('fortify.login_email_confirm'))
+                        {{ __('На вашу электронную почту отправлен код подтверждения, проверьте почту и введите этот код.') }}
+                    @else
+                        {{ __('Please confirm access to your account by entering the authentication code provided by your authenticator application.') }}
+                    @endif
                 </div>
 
+                @if(!config('fortify.login_email_confirm'))
                 <div class="mb-3" x-show="recovery">
                     {{ __('Please confirm access to your account by entering one of your emergency recovery codes.') }}
                 </div>
+                @endif
 
                 <x-jet-validation-errors class="mb-3" />
 
@@ -20,7 +26,7 @@
                     @csrf
 
                     <div class="mb-3" x-show="! recovery">
-                        <x-jet-label value="{{ __('Code') }}" />
+                        <x-jet-label value="{{ __('Код подтверждения') }}" />
                         <x-jet-input class="{{ $errors->has('code') ? 'is-invalid' : '' }}" type="text"
                                      inputmode="numeric" name="code" autofocus x-ref="code" autocomplete="one-time-code" />
                         <x-jet-input-error for="code"></x-jet-input-error>
@@ -34,6 +40,7 @@
                     </div>
 
                     <div class="d-flex justify-content-end mt-3">
+                        @if(!config('fortify.login_email_confirm'))
                         <button type="button" class="btn btn-outline-secondary"
                                 x-show="! recovery"
                                 x-on:click="
@@ -42,6 +49,7 @@
                                         ">
                             {{ __('Use a recovery code') }}
                         </button>
+                        @endif
 
                         <button type="button" class="btn btn-outline-secondary"
                                 x-show="recovery"
@@ -53,7 +61,7 @@
                         </button>
 
                         <x-jet-button>
-                            {{ __('Log in') }}
+                            {{ __('Войти') }}
                         </x-jet-button>
                     </div>
                 </form>

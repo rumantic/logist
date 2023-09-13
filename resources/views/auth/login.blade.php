@@ -4,7 +4,7 @@
             <x-jet-authentication-card-logo />
         </x-slot>
         <div class="card-header">
-            <h4 class="card-title">{{ __('Login') }}</h4>
+            <h4 class="card-title">{{ __('Вход') }}</h4>
         </div>
         <div class="card-body">
 
@@ -29,7 +29,7 @@
                 <div class="mb-3">
 
                     <label class="form-label">
-                        {{ __('Password') }}
+                        {{ __('Пароль') }}
                     </label>
                     <x-jet-input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password"
                                  name="password" required autocomplete="current-password" />
@@ -40,7 +40,7 @@
                     <div class="custom-control custom-checkbox">
                         <x-jet-checkbox id="remember_me" name="remember" />
                         <label class="custom-control-label" for="remember_me">
-                            {{ __('Remember Me') }}
+                            {{ __('Запомнить меня') }}
                         </label>
                     </div>
                 </div>
@@ -49,12 +49,12 @@
                     <div class="d-flex justify-content-end align-items-baseline">
                         @if (Route::has('password.request'))
                             <a class="text-muted me-3" href="{{ route('password.request') }}">
-                                {{ __('Forgot your password?') }}
+                                {{ __('Забыли пароль?') }}
                             </a>
                         @endif
 
                         <x-jet-button>
-                            {{ __('Log in') }}
+                            {{ __('Войти') }}
                         </x-jet-button>
                     </div>
                 </div>

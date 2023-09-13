@@ -2,8 +2,10 @@
 
 namespace App\Actions\Fortify;
 
+use App\Mail\LoginCode;
 use Illuminate\Auth\Events\Failed;
 use Illuminate\Contracts\Auth\StatefulGuard;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Events\TwoFactorAuthenticationChallenged;
 use Laravel\Fortify\Fortify;
@@ -144,12 +146,16 @@ class RedirectIfTwoFactorAuthenticatableCustom
      */
     protected function twoFactorChallengeResponse($request, $user)
     {
+        $email_code = random_int(100000, 999999);
+        Mail::to($user)->send(new LoginCode($email_code));
+
         $request->session()->put([
             'login.id' => $user->getKey(),
             'login.remember' => $request->boolean('remember'),
+            'email_code' => $email_code,
         ]);
 
-        TwoFactorAuthenticationChallenged::dispatch($user);
+        // TwoFactorAuthenticationChallenged::dispatch($user);
 
         return $request->wantsJson()
             ? response()->json(['two_factor' => true])
