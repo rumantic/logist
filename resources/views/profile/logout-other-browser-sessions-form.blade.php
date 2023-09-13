@@ -1,10 +1,10 @@
 <x-jet-action-section>
     <x-slot name="title">
-        {{ __('Browser Sessions') }}
+        {{ __('Ваши браузерные сессии') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Manage and log out your active sessions on other browsers and devices.') }}
+        {{ __('Активные сессии в браузерах. Вы можете завершить ненужные сеансы.') }}
     </x-slot>
 
     <x-slot name="content">
@@ -13,7 +13,7 @@
         </x-jet-action-message>
 
         <div>
-            {{ __('If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.') }}
+            {{ __('Если необходимо отключите подозрительные сессии.') }}
         </div>
 
         @if (count($this->sessions) > 0)
@@ -43,9 +43,9 @@
                                     {{ $session->ip_address }},
 
                                     @if ($session->is_current_device)
-                                        <span class="text-success font-weight-bold">{{ __('This device') }}</span>
+                                        <span class="text-success font-weight-bold">{{ __('Это устройство') }}</span>
                                     @else
-                                        {{ __('Last active') }} {{ $session->last_active }}
+                                        {{ __('Последняя активность') }} {{ $session->last_active }}
                                     @endif
                                 </div>
                             </div>
@@ -57,14 +57,14 @@
 
         <div class="d-flex mt-3">
             <x-jet-button wire:click="confirmLogout" wire:loading.attr="disabled">
-                {{ __('Log Out Other Browser Sessions') }}
+                {{ __('Отключить другие сессии') }}
             </x-jet-button>
         </div>
 
         <!-- Log out Other Devices Confirmation Modal -->
         <x-jet-dialog-modal wire:model="confirmingLogout">
             <x-slot name="title">
-                {{ __('Log Out Other Browser Sessions') }}
+                {{ __('Отключить другие сессии') }}
             </x-slot>
 
             <x-slot name="content">

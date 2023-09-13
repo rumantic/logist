@@ -142,6 +142,6 @@ return [
         ]),
     ],
 
-    'login_email_confirm' => true,
+    'login_email_confirm' => env('FORTIFY_LOGIN_EMAIL_CONFIRM', true),
 
 ];

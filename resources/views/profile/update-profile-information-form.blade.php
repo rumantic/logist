@@ -1,16 +1,16 @@
 <x-jet-form-section submit="updateProfileInformation">
     <x-slot name="title">
-        {{ __('Profile Information') }}
+        {{ __('Информация о профиле') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Update your account\'s profile information and email address.') }}
+        {{ __('Обновление вашей информацию пользователя и email.') }}
     </x-slot>
 
     <x-slot name="form">
 
         <x-jet-action-message on="saved">
-            {{ __('Saved.') }}
+            {{ __('Сохранено.') }}
         </x-jet-action-message>
 
         <!-- Profile Photo -->
@@ -29,7 +29,7 @@
                                     reader.readAsDataURL($refs.photo.files[0]);
                             " />
 
-                <x-jet-label for="photo" value="{{ __('Photo') }}" />
+                <x-jet-label for="photo" value="{{ __('Фото') }}" />
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" x-show="! photoPreview">
@@ -42,7 +42,7 @@
                 </div>
 
                 <x-jet-secondary-button class="mt-2 me-2" type="button" x-on:click.prevent="$refs.photo.click()">
-                    {{ __('Select A New Photo') }}
+                    {{ __('Выбрать новое фото') }}
 				</x-jet-secondary-button>
 
 				@if ($this->user->profile_photo_path)
@@ -51,7 +51,7 @@
                             <span class="visually-hidden">Loading...</span>
                         </div>
 
-                        {{ __('Remove Photo') }}
+                        {{ __('Удалить фото') }}
                     </x-jet-secondary-button>
                 @endif
 
@@ -76,7 +76,7 @@
                     <span class="visually-hidden">Loading...</span>
                 </div>
 
-				{{ __('Save') }}
+				{{ __('Сохранить') }}
 			</x-jet-button>
 		</div>
     </x-slot>
