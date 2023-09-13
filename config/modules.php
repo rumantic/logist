@@ -6,7 +6,7 @@
  */
 return [
     'user' => true,
-    'user_verify' => true,
+    'user_verify' => false,
     'user_mobile_verify' => false,
     'notification' => true,
     'content' => true,
