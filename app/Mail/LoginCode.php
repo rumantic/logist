@@ -33,6 +33,16 @@ class LoginCode extends Mailable
     }
 
     /**
+     * Build the message.
+     *
+     * @return $this
+     */
+    public function build()
+    {
+        return $this->markdown('auth.login-code');
+    }
+
+    /**
      * Get the message content definition.
      */
     public function content(): Content
