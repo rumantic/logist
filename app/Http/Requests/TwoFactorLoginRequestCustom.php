@@ -59,15 +59,6 @@ class TwoFactorLoginRequestCustom extends FormRequest
             return true;
         }
         return false;
-        /*
-        return $this->code && tap(app(TwoFactorAuthenticationProvider::class)->verify(
-                decrypt($this->challengedUser()->two_factor_secret), $this->code
-            ), function ($result) {
-                if ($result) {
-                    $this->session()->forget('login.id');
-                }
-            });
-        */
     }
 
     /**
