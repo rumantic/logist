@@ -43,8 +43,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['re
         Route::any('/faqs/index', \App\Http\Livewire\App\FAQ\Index::class)->name('faqs.index');
 
         Route::group(['prefix' => config('bap.panel-prefix-url')], function() {
-            // ??? Route::get('/panel/order/index', \App\Http\Livewire\Panel\Order\Index::class)->name('panel.order.index');
+            Route::get('/order/index', \App\Http\Livewire\Panel\Order\Index::class)->name('panel.order.index');
             Route::get('/dashboard/index', \App\Http\Livewire\Panel\Order\Index::class)->name('panel.dashboard.index');
+            Route::get('/company/index', \App\Http\Livewire\Components\Company\Index::class)->name('panel.company.index');
 
 
             if(config('modules.wallet')) {

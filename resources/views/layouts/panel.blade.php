@@ -1,3 +1,28 @@
+@php
+    $menu = [
+        [
+            'route' => 'panel.dashboard.index',
+            'title' => __('bap.dashboard'),
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="13" r="2" /><line x1="13.45" y1="11.55" x2="15.5" y2="9.5" /><path d="M6.4 20a9 9 0 1 1 11.2 0z" /></svg>',
+        ],
+        [
+            'route' => 'panel.company.index',
+            'title' => __('Компании'),
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-factory" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 21c1.147 -4.02 1.983 -8.027 2 -12h6c.017 3.973 .853 7.98 2 12"></path>
+   <path d="M12.5 13h4.5c.025 2.612 .894 5.296 2 8"></path>
+   <path d="M9 5a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1"></path>
+   <path d="M3 21l19 0"></path>
+</svg>',
+        ],
+/*        [
+            'route' => 'panel.dashboard.index',
+            'title' => __('bap.dashboard'),
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="13" r="2" /><line x1="13.45" y1="11.55" x2="15.5" y2="9.5" /><path d="M6.4 20a9 9 0 1 1 11.2 0z" /></svg>',
+        ],*/
+    ];
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ __('bap.direction') }}">
 <head>
@@ -36,16 +61,18 @@
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="navbar-nav pt-lg-3">
 
-                    <li class="nav-item @if(\Illuminate\Support\Facades\Route::is('panel.dashboard.index')) active @endif">
-                        <a class="nav-link" href="{{ route('panel.dashboard.index') }}" >
+                    @foreach( $menu as $item )
+                        <li class="nav-item @if(\Illuminate\Support\Facades\Route::is($item['route'])) active @endif">
+                            <a class="nav-link" href="{{ route($item['route']) }}" >
                                     <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
-	                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="13" r="2" /><line x1="13.45" y1="11.55" x2="15.5" y2="9.5" /><path d="M6.4 20a9 9 0 1 1 11.2 0z" /></svg>
+                                        {!! $item['icon'] !!}
                                     </span>
-                            <span class="nav-link-title">
-                                      {{ __('bap.dashboard') }}
+                                <span class="nav-link-title">
+                                      {{ $item['title'] }}
                                     </span>
-                        </a>
-                    </li>
+                            </a>
+                        </li>
+                    @endforeach
                     @if(config('modules.wallet'))
                     <li class="nav-item @if(\Illuminate\Support\Facades\Route::is('panel.wallet.index')) active @endif">
                         <a class="nav-link" href="{{ route('panel.wallet.index') }}" >
