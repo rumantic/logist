@@ -7,9 +7,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-6">
-                        @include('livewire.form.render', ['form_shape' => $form_shape])
-                    </div>
+                    @include('livewire.form.render', ['form_shape' => $form_shape])
                 </div>
             </div>
             <div class="modal-footer">

@@ -2,8 +2,6 @@
 
 namespace App\Http\Livewire\Panel\Order;
 
-use App\Models\Article;
-use App\Models\Category;
 use App\Models\Order;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;

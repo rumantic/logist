@@ -30,6 +30,10 @@ class OrderTable extends DataTableComponent
                 'id' => $row->id,
                 ];
         });
+
+        $this->setTableAttributes([
+            'class' => 'table-hover',
+        ]);
     }
 
     public function columns(): array

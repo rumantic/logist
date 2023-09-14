@@ -10,6 +10,8 @@ class Company extends Model
 {
     use HasFactory;
     use Filterable;
+    const CREATED_AT = 'addTime';
+    const UPDATED_AT = 'updateTime';
 
     public $table = 'company';
 

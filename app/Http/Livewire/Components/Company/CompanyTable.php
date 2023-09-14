@@ -31,6 +31,10 @@ class CompanyTable extends DataTableComponent
                 'id' => $row->id,
                 ];
         });
+
+        $this->setTableAttributes([
+            'class' => 'table-hover',
+        ]);
     }
 
     public function columns(): array
@@ -58,9 +62,9 @@ class CompanyTable extends DataTableComponent
                 ->sortable(),
             Column::make("actions", "id")
                 ->format(function ($value, $row) {
-                    return view('livewire.panel.order.actions')
+                    return view('livewire.components.company.actions')
                         ->with('id', $value)
-                        ->with('order', $row);
+                        ->with('model', $row);
                 }),
         ];
     }
