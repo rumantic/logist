@@ -9,14 +9,18 @@ class BaseComponent extends Component
 {
     protected $form_shape;
 
-    protected function initClassAttributes ( $form_shape ): void
+    protected function initClassAttributes ( $form_shape, $model = null ): void
     {
         foreach ( $form_shape as $key => $item ) {
-            $this->{$key} = null;
+            if ( !is_null($model) and isset($model->{$key}) ) {
+                $this->{$key} = $model->{$key};
+            } else {
+                $this->{$key} = null;
+            }
         }
     }
 
-    protected function initModelValues ( $form_shape, $model ): void
+    protected function initModelValues ( $form_shape, $model )
     {
         foreach ( $form_shape as $key => $item ) {
             switch ( $item['type'] ) {
@@ -28,6 +32,7 @@ class BaseComponent extends Component
                     $model->{$key} = $this->{$key};
             }
         }
+        return $model;
     }
 
     private function getInputValue ( $key, $value )

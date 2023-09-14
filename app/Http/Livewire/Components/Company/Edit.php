@@ -7,15 +7,11 @@ use App\Models\Company;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;
 
-class Create extends BaseComponent
+class Edit extends BaseComponent
 {
     use LivewireAlert;
     use WithFileUploads;
-    protected $form_shape;
-
-    protected $listeners = [
-        'updateList' => 'render'
-    ];
+    public Company $model;
 
     public function __construct($id = null)
     {
@@ -25,31 +21,39 @@ class Create extends BaseComponent
         parent::__construct($id);
     }
 
-    public function create()
+    public function mount($id)
+    {
+        $form = new CompanyForm();
+        $this->form_shape = $form->get();
+
+        $this->model = Company::where('id', $id)->first();
+        $this->initClassAttributes($this->form_shape, $this->model);
+    }
+
+    public function edit()
     {
 /*
-        if(!auth()->user()->can('admin_article_create')) {
+        if(!auth()->user()->can('admin_order_edit')) {
             return abort(403);
-        }
-*/
+        }*/
+
         $this->validate($this->getValidateRules($this->form_shape));
 
-        $model = new Company();
+        $model = $this->model;
+
         $model = $this->initModelValues($this->form_shape, $model);
         $model->save();
 
         $this->emit('refreshDatatable');
         $this->emit('hideModal');
 
-        $this->alert('success', __('bap.created'));
+        $this->alert('success', __('bap.edited'));
     }
 
     public function render()
     {
-        //dd($this->form_shape);
-        //$form_shape = $this->form_shape;
         $form = new CompanyForm();
         $form_shape = $form->get();
-        return view('livewire.components.company.create', compact('form_shape'));
+        return view('livewire.components.company.edit', compact('form_shape'));
     }
 }
