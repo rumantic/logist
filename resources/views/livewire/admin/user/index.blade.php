@@ -122,32 +122,43 @@
                     </td>
                     <td>{{ $user->created_at }}</td>
                     <td class="text-end">
+                            @can('admin_user_companies')
+                                <button title="{{__('Компании пользователя')}}" onclick="Livewire.emit('showModal', 'admin.user.companies', '{{ json_encode($user->id) }}')" class="btn btn-secondary btn-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-factory" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M4 21c1.147 -4.02 1.983 -8.027 2 -12h6c.017 3.973 .853 7.98 2 12"></path>
+                                        <path d="M12.5 13h4.5c.025 2.612 .894 5.296 2 8"></path>
+                                        <path d="M9 5a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1"></path>
+                                        <path d="M3 21l19 0"></path>
+                                    </svg>
+                                </button>
+                            @endcan
                             @can('admin_user_roles')
-                            <button onclick="Livewire.emit('showModal', 'admin.user.roles', '{{ json_encode($user->id) }}')" class="btn btn-secondary btn-icon btn-sm">
+                            <button title="{{__('Роли')}}" onclick="Livewire.emit('showModal', 'admin.user.roles', '{{ json_encode($user->id) }}')" class="btn btn-secondary btn-icon">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/users -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>
                             </button>
                             @endcan
                             @can('admin_user_permissions')
-                            <button onclick="Livewire.emit('showModal', 'admin.user.permissions', '{{ json_encode($user->id) }}')" class="btn btn-warning btn-icon btn-sm">
+                            <button title="{{__('Права доступа')}}" onclick="Livewire.emit('showModal', 'admin.user.permissions', '{{ json_encode($user->id) }}')" class="btn btn-warning btn-icon">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/lock-access -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 8v-2a2 2 0 0 1 2 -2h2" /><path d="M4 16v2a2 2 0 0 0 2 2h2" /><path d="M16 4h2a2 2 0 0 1 2 2v2" /><path d="M16 20h2a2 2 0 0 0 2 -2v-2" /><rect x="8" y="11" width="8" height="5" rx="1" /><path d="M10 11v-2a2 2 0 1 1 4 0v2" /></svg>
                             </button>
                             @endcan
                             @can('admin_user_edit')
-                            <button onclick="Livewire.emit('showModal', 'admin.user.edit', '{{ json_encode($user->id) }}')" class="btn btn-primary btn-icon btn-sm">
+                            <button title="{{__('Редактировать')}}" onclick="Livewire.emit('showModal', 'admin.user.edit', '{{ json_encode($user->id) }}')" class="btn btn-primary btn-icon">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/edit -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" /><path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" /><line x1="16" y1="5" x2="19" y2="8" /></svg>
                             </button>
                             @endcan
                             @can('admin_user_delete')
-                            <button wire:click="delete({{ $user->id }})" class="btn btn-danger btn-icon btn-sm">
+                            <button title="{{__('Удалить')}}" wire:click="delete({{ $user->id }})" class="btn btn-danger btn-icon">
                                 <!-- Download SVG icon from http://tabler-icons.io/i/trash -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="4" y1="7" x2="20" y2="7" /><line x1="10" y1="11" x2="10" y2="17" /><line x1="14" y1="11" x2="14" y2="17" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /></svg>
                             </button>
                             @endcan
                                 @can('admin_user_ban')
-                                    <button onclick="Livewire.emit('showModal', 'admin.user.ban', '{{ json_encode($user->id) }}')" class="btn btn-pink btn-icon btn-sm">
+                                    <button title="{{__('Заблокировать')}}" onclick="Livewire.emit('showModal', 'admin.user.ban', '{{ json_encode($user->id) }}')" class="btn btn-pink btn-icon">
                                         <!-- Download SVG icon from http://tabler-icons.io/i/edit -->
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ban" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <desc>Download more icon variants from https://tabler-icons.io/i/ban</desc>
@@ -157,8 +168,10 @@
                                         </svg>
                                     </button>
                                 @endcan
+{{--
+
                                 @can('admin_user_wallet')
-                                    <button onclick="Livewire.emit('showModal', 'admin.user.wallet.index', '{{ json_encode($user->id) }}')" class="btn btn-purple btn-icon btn-sm">
+                                    <button onclick="Livewire.emit('showModal', 'admin.user.wallet.index', '{{ json_encode($user->id) }}')" class="btn btn-purple btn-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wallet" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12"></path>
@@ -166,6 +179,8 @@
                                         </svg>
                                     </button>
                                 @endcan
+
+--}}
                     </td>
                 </tr>
                 @endforeach
