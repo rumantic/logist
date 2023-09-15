@@ -19,6 +19,11 @@ class CompanyForm
                 'type' => Types::$INPUT,
                 'validate' => ['string', 'nullable'],
             ],
+            'typeId' => [
+                'title' => __('Тип компании'),
+                'type' => Types::$SELECT,
+                'validate' => ['integer', 'nullable'],
+            ],
             'directorName' => [
                 'title' => __('ФИО директора'),
                 'type' => Types::$INPUT,
