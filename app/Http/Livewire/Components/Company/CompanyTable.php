@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Components\Company;
 
 use App\Models\Company;
+use Illuminate\Database\Eloquent\Builder;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -35,6 +36,13 @@ class CompanyTable extends DataTableComponent
         $this->setTableAttributes([
             'class' => 'table-hover',
         ]);
+    }
+
+    public function builder(): Builder
+    {
+        return Company::query()->with($this->getRelationships())->whereHas('users', function($q){
+            $q->where('id', 1);
+        });
     }
 
     public function columns(): array
