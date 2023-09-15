@@ -27,7 +27,7 @@ class CompanyForm
             'email' => [
                 'title' => __('Email'),
                 'type' => Types::$INPUT,
-                'validate' => ['string', 'required'],
+                'validate' => ['email', 'required'],
             ],
             'phones' => [
                 'title' => __('Телефоны'),

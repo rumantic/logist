@@ -3,6 +3,14 @@
     <div class="col col-md-6 col-xl-4">
         <div class="mb-3">
             @switch( $item['type'] )
+                @case(App\Form\Types::$CHECKBOX)
+                    @include('livewire.form.checkbox',
+                        [
+                            'model_name' => $key,
+                            'title' => $item['title'],
+                            'message' => $message ?? null
+                        ])
+                    @break
                 @case(App\Form\Types::$TEXTAREA)
                     @include('livewire.form.textarea',
                         [
