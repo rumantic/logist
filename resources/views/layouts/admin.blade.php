@@ -212,6 +212,22 @@
 
                         @includeIf('layouts.custom.admin')
 
+                        @can('admin_activitylog_index')
+                            <li class="nav-item @if(\Illuminate\Support\Facades\Route::is('admin.activitylog.index')) active @endif">
+                                <a class="nav-link" href="{{ route('admin.activitylog.index') }}" >
+                                    <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-activity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                           <path d="M3 12h4l3 8l4 -16l3 8h4"></path>
+                                        </svg>
+                                    </span>
+                                    <span class="nav-link-title">
+                                      {{ __('Журнал событий') }}
+                                    </span>
+                                </a>
+                            </li>
+                        @endcan
+
                         @can('admin_support_management')
                             <li class="nav-item dropdown @if(\Illuminate\Support\Facades\Route::is('admin.support.*')) show  active  @endif">
                                 <a class="nav-link dropdown-toggle" href="#navbar-user" data-bs-toggle="dropdown" data-bs-auto-close="false" role="button" aria-expanded="true">

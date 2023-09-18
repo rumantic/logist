@@ -6,6 +6,7 @@ use App\Http\Requests\TwoFactorLoginRequestCustom;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Fortify\Contracts\FailedTwoFactorLoginResponse;
 use Laravel\Fortify\Contracts\TwoFactorChallengeViewResponse;
 use Laravel\Fortify\Contracts\TwoFactorLoginResponse;
