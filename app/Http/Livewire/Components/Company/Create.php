@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Components\Company;
 
 use App\Http\Livewire\Components\BaseComponent;
 use App\Models\Company;
+use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;
 
@@ -37,11 +38,14 @@ class Create extends BaseComponent
         $model = new Company();
         $model = $this->initModelValues($this->form_shape, $model);
         $model->save();
+        $model->users()->syncWithoutDetaching(Auth::user()->id);
 
         $this->emit('refreshDatatable');
         $this->emit('hideModal');
 
         $this->alert('success', __('bap.created'));
+        activity()->causedBy(Auth::user())->log('Добавлена новая компания '.$model->name);
+
     }
 
     public function render()

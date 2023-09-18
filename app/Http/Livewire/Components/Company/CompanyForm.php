@@ -82,17 +82,17 @@ class CompanyForm
             'active' => [
                 'title' => __('Активна'),
                 'type' => Types::$CHECKBOX,
-                'validate' => ['boolean'],
+                'validate' => ['boolean', 'nullable'],
             ],
             'calcTransact' => [
                 'title' => __('calcTransact'),
                 'type' => Types::$CHECKBOX,
-                'validate' => ['boolean'],
+                'validate' => ['boolean', 'nullable'],
             ],
             'loadPayment' => [
                 'title' => __('loadPayment'),
                 'type' => Types::$CHECKBOX,
-                'validate' => ['boolean'],
+                'validate' => ['boolean', 'nullable'],
             ],
         ];
         return $form;

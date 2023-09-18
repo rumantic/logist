@@ -24,6 +24,11 @@ class BaseComponent extends Component
     {
         foreach ( $form_shape as $key => $item ) {
             switch ( $item['type'] ) {
+                case Types::$CHECKBOX:
+                    if ( empty($this->{$key}) ) {
+                        $model->{$key} = 0;
+                    }
+                    break;
                 case Types::$TEXTAREA:
                 case Types::$INPUT:
                     $model->{$key} = $this->getInputValue($key, $this->{$key});

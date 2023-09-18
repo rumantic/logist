@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Components\Company;
 
 use App\Http\Livewire\Components\BaseComponent;
 use App\Models\Company;
+use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;
 
@@ -48,6 +49,8 @@ class Edit extends BaseComponent
         $this->emit('hideModal');
 
         $this->alert('success', __('bap.edited'));
+        activity()->causedBy(Auth::user())->log('Редактирование профиля компании '.$model->name);
+
     }
 
     public function render()
