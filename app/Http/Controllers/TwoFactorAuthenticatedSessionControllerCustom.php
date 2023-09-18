@@ -67,6 +67,7 @@ class TwoFactorAuthenticatedSessionControllerCustom extends Controller
         }
 
         $this->guard->login($user, $request->remember());
+        activity()->causedBy(Auth::user())->log('Вход в личный кабинет');
 
         $request->session()->regenerate();
 
