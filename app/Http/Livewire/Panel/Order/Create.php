@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire\Panel\Order;
 
+use App\Http\Livewire\Components\BaseComponent;
 use App\Models\Order;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class Create extends Component
+class Create extends BaseComponent
 {
     use LivewireAlert;
     use WithFileUploads;
@@ -18,6 +18,14 @@ class Create extends Component
     protected $listeners = [
         'updateList' => 'render'
     ];
+
+    public function __construct($id = null)
+    {
+        $form = new OrderForm();
+        $this->form_shape = $form->get();
+        $this->initClassAttributes($this->form_shape);
+        parent::__construct($id);
+    }
 
     public function create()
     {
@@ -47,6 +55,8 @@ class Create extends Component
     {
         $form = new OrderForm();
         $form_shape = $form->get();
-        return view('livewire.panel.order.create', compact('form_shape'));
+        $form_options = $this->form_options;
+
+        return view('livewire.panel.order.create', compact('form_shape', 'form_options'));
     }
 }

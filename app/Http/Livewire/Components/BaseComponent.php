@@ -27,7 +27,11 @@ class BaseComponent extends Component
         switch ( $item['type'] )
         {
             case Types::$SELECT:
-                $this->form_options[$key] = $this->initSelectOptions($item['hasOne']);
+                if ( isset($item['options']) ) {
+                    $this->form_options[$key] = $item['options'];
+                } else {
+                    $this->form_options[$key] = $this->initSelectOptions($item['hasOne']);
+                }
                 break;
             default:
         }

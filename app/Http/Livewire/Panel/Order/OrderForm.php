@@ -11,6 +11,20 @@ class OrderForm {
                 'title' => __('Период перевозки'),
                 'type' => Types::$DATE_RANGE,
             ],
+            'transport_type' => [
+                'title' => __('Вид перевозки'),
+                'type' => Types::$SELECT,
+                'options' => [
+                    [
+                        'value' => 1,
+                        'description' => 'групповая',
+                    ],
+                    [
+                        'value' => 2,
+                        'description' => 'повагонная',
+                    ],
+                ],
+            ],
             'station_start' => [
                 'title' => __('bap.station_start'),
                 'type' => Types::$INPUT,

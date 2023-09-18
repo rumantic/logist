@@ -2,13 +2,15 @@
 
 namespace App\Http\Livewire\Panel\Order;
 
+use App\Http\Livewire\Components\BaseComponent;
 use App\Models\Category;
 use App\Models\Order;
+use Faker\Provider\Base;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class Edit extends Component
+class Edit extends BaseComponent
 {
     use LivewireAlert;
     use WithFileUploads;
@@ -16,6 +18,15 @@ class Edit extends Component
     public $station_start;
     public $station_end;
     public Order $order;
+
+    public function __construct($id = null)
+    {
+        $form = new OrderForm();
+        $this->form_shape = $form->get();
+        $this->initClassAttributes($this->form_shape);
+        parent::__construct($id);
+    }
+
 
     public function mount($id)
     {
