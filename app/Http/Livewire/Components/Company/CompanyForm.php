@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Components\Company;
 
 use App\Form\Types;
+use App\Models\CompanyType;
 
 class CompanyForm
 {
@@ -22,7 +23,8 @@ class CompanyForm
             'typeId' => [
                 'title' => __('Тип компании'),
                 'type' => Types::$SELECT,
-                'validate' => ['integer', 'nullable'],
+                'validate' => ['integer', 'required'],
+                'hasOne' => CompanyType::class,
             ],
             'directorName' => [
                 'title' => __('ФИО директора'),

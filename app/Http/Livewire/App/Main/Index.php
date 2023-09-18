@@ -4,12 +4,18 @@ namespace App\Http\Livewire\App\Main;
 
 use App\Models\Article;
 use App\Models\Carousel;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Index extends Component
 {
     public function render()
     {
+/*
+        if ( Auth::user() ) {
+            $this->redirect(route('panel.order.index'));
+        }
+*/
         $displayItems = [];
 
         if(config('bap.home.display-carousels')) {

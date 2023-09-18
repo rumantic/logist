@@ -54,6 +54,8 @@ class Create extends BaseComponent
         //$form_shape = $this->form_shape;
         $form = new CompanyForm();
         $form_shape = $form->get();
-        return view('livewire.components.company.create', compact('form_shape'));
+        $form_options = $this->form_options;
+
+        return view('livewire.components.company.create', compact('form_shape', 'form_options'));
     }
 }

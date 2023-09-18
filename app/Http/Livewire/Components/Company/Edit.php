@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Components\Company;
 
 use App\Http\Livewire\Components\BaseComponent;
 use App\Models\Company;
+use App\Models\CompanyType;
 use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;
@@ -53,10 +54,14 @@ class Edit extends BaseComponent
 
     }
 
+
+
     public function render()
     {
         $form = new CompanyForm();
         $form_shape = $form->get();
-        return view('livewire.components.company.edit', compact('form_shape'));
+        $form_options = $this->form_options;
+
+        return view('livewire.components.company.edit', compact('form_shape', 'form_options'));
     }
 }

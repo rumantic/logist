@@ -8,6 +8,7 @@ use Livewire\Component;
 class BaseComponent extends Component
 {
     protected $form_shape;
+    protected $form_options = [];
 
     protected function initClassAttributes ( $form_shape, $model = null ): void
     {
@@ -17,7 +18,35 @@ class BaseComponent extends Component
             } else {
                 $this->{$key} = null;
             }
+            $this->initRelatedModels($key, $item);
         }
+    }
+
+    protected function initRelatedModels ( $key, $item )
+    {
+        switch ( $item['type'] )
+        {
+            case Types::$SELECT:
+                $this->form_options[$key] = $this->initSelectOptions($item['hasOne']);
+                break;
+            default:
+        }
+    }
+
+    protected function initSelectOptions ( $model )
+    {
+        $items = $model::all();
+        $result = [];
+
+        if ( $items ) {
+            foreach ( $items as $item ) {
+                $result[] = [
+                    'value' => $item->id,
+                    'description'=> $item->name
+                ];
+            }
+        }
+        return collect($result);
     }
 
     protected function initModelValues ( $form_shape, $model )
