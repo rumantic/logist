@@ -65,6 +65,8 @@ class Edit extends BaseComponent
     {
         $form = new OrderForm();
         $form_shape = $form->get();
-        return view('livewire.panel.order.edit', compact('form_shape'));
+        $form_options = $this->form_options;
+
+        return view('livewire.panel.order.edit', compact('form_shape', 'form_options'));
     }
 }

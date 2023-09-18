@@ -2,6 +2,7 @@
 namespace App\Http\Livewire\Panel\Order;
 
 use App\Form\Types;
+use App\Models\Stantion;
 
 class OrderForm {
     public function get()
@@ -24,14 +25,19 @@ class OrderForm {
                         'description' => 'повагонная',
                     ],
                 ],
+                'validate' => ['integer', 'required'],
             ],
             'station_start' => [
                 'title' => __('bap.station_start'),
-                'type' => Types::$INPUT,
+                'type' => Types::$SELECT,
+                'validate' => ['integer', 'required'],
+                'hasOne' => Stantion::class,
             ],
             'station_end' => [
                 'title' => __('bap.station_end'),
-                'type' => Types::$INPUT,
+                'type' => Types::$SELECT,
+                'validate' => ['integer', 'required'],
+                'hasOne' => Stantion::class,
             ],
             'description' => [
                 'title' => __('bap.description'),

@@ -39,7 +39,7 @@ class BaseComponent extends Component
 
     protected function initSelectOptions ( $model )
     {
-        $items = $model::all();
+        $items = $model::limit(10)->get();
         $result = [];
 
         if ( $items ) {
