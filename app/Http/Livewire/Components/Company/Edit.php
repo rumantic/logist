@@ -49,7 +49,7 @@ class Edit extends BaseComponent
         $this->emit('hideModal');
 
         $this->alert('success', __('bap.edited'));
-        activity()->causedBy(Auth::user())->log('Редактирование профиля компании '.$model->name);
+        activity()->causedBy(Auth::user())->log('Редактирование профиля компании ('.$model->name.')');
 
     }
 

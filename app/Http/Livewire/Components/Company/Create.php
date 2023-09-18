@@ -44,7 +44,7 @@ class Create extends BaseComponent
         $this->emit('hideModal');
 
         $this->alert('success', __('bap.created'));
-        activity()->causedBy(Auth::user())->log('Добавлена новая компания '.$model->name);
+        activity()->causedBy(Auth::user())->log('Добавлена новая компания ('.$model->name.')');
 
     }
 
