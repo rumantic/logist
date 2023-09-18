@@ -1,9 +1,6 @@
-<input class="form-control basicAutoComplete" type="text" autocomplete="off">
-
-
-<select class="form-select" aria-label="Default select example">
-    <option selected>Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-</select>
+<livewire:components.company.select-type
+    name="car_brand_id"
+    :value="1"
+    :searchable="true"
+    placeholder="Choose a Car Brand"
+/>
