@@ -7,6 +7,10 @@ class OrderForm {
     public function get()
     {
         $form = [
+            'daterange' => [
+                'title' => __('Период перевозки'),
+                'type' => Types::$DATE_RANGE,
+            ],
             'station_start' => [
                 'title' => __('bap.station_start'),
                 'type' => Types::$INPUT,
