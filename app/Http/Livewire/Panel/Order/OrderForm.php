@@ -56,54 +56,53 @@ class OrderForm {
                 'validate' => ['integer', 'required'],
                 'hasOne' => Company::class,
             ],
-
-            /*
-                        'ROD' => [
-                            'title' => __('Род подвижного состава, кол-во, номер вагона'),
-                            'type' => Types::$INPUT,
-                            'validate' => ['string', 'nullable'],
-                        ],
-                        'TREB' => [
-                            'title' => __('Требования к подвижному составу'),
-                            'type' => Types::$TEXTAREA,
-                            'validate' => ['string', 'nullable'],
-                        ],
-                        'GRUZ' => [
-                            'title' => __('Груз'),
-                            'type' => Types::$TEXTAREA,
-                            'validate' => ['string', 'nullable'],
-                        ],
-                        'CODE' => [
-                            'title' => __('Код груза по ЕТСНГ'),
-                            'type' => Types::$INPUT,
-                            'validate' => ['string', 'nullable'],
-                        ],
-                        'weight' => [
-                            'title' => __('Вес, тн.'),
-                            'type' => Types::$INPUT,
-                            'validate' => ['string', 'nullable'],
-                        ],
-                        'conditions' => [
-                            'title' => __('Особые условия'),
-                            'type' => Types::$TEXTAREA,
-                            'validate' => ['string', 'nullable'],
-                        ],
-                        'bid' => [
-                            'title' => __('Согласованная ставка'),
-                            'type' => Types::$INPUT,
-                            'validate' => ['string', 'nullable'],
-                        ],
-                        'payer_ru' => [
-                            'title' => __('Плательщик по РФ'),
-                            'type' => Types::$INPUT,
-                            'validate' => ['string', 'nullable'],
-                        ],
-                        'payer_sng' => [
-                            'title' => __('Плательщик по СНГ порожнего ( при отправке на экспорт)'),
-                            'type' => Types::$INPUT,
-                            'validate' => ['string', 'nullable'],
-                        ],
-                        */
+            'ROD' => [
+                'title' => __('Род подвижного состава, кол-во, номер вагона'),
+                'type' => Types::$INPUT,
+                'validate' => ['string', 'nullable'],
+            ],
+            'TREB' => [
+                'title' => __('Требования к подвижному составу'),
+                'type' => Types::$TEXTAREA,
+                'validate' => ['string', 'nullable'],
+            ],
+            'GRUZ' => [
+                'title' => __('Груз'),
+                'type' => Types::$TEXTAREA,
+                'validate' => ['string', 'nullable'],
+            ],
+            'CODE' => [
+                'title' => __('Код груза по ЕТСНГ'),
+                'type' => Types::$INPUT,
+                'validate' => ['string', 'nullable'],
+            ],
+            'weight' => [
+                'title' => __('Вес, тн.'),
+                'type' => Types::$INPUT,
+                'default' => 0,
+                'validate' => ['integer', 'nullable'],
+            ],
+            'conditions' => [
+                'title' => __('Особые условия'),
+                'type' => Types::$TEXTAREA,
+                'validate' => ['string', 'nullable'],
+            ],
+            'bid' => [
+                'title' => __('Согласованная ставка'),
+                'type' => Types::$INPUT,
+                'default' => 0,
+                'validate' => ['integer', 'nullable'],
+            ],
+            'payer_ru' => [
+                'title' => __('Плательщик по РФ'),
+                'type' => Types::$INPUT,
+                'validate' => ['string', 'nullable'],
+            ],
+            'payer_sng' => [
+                'title' => __('Плательщик по СНГ порожнего ( при отправке на экспорт)'),
+                'type' => Types::$INPUT,
+                'validate' => ['string', 'nullable'],
+            ],
         ];
         return $form;
     }

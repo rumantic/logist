@@ -23,6 +23,10 @@ class Create extends BaseComponent
         $form = new OrderForm();
         $this->form_shape = $form->get();
         $this->initClassAttributes($this->form_shape);
+        $this->start_date = date('Y-m-d', strtotime(date('Y-m-d'). ' + 3 days'));
+        $this->end_date = date('Y-m-d', strtotime(date('Y-m-d'). ' + 7 days'));
+        $this->weight = 0;
+        $this->bid = 0;
         parent::__construct($id);
     }
 
