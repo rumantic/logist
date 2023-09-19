@@ -11,7 +11,7 @@
 
 <script>
     $(function() {
-        $('input[name="daterange"]').daterangepicker({
+        $('input[name="{{$model_name}}"]').daterangepicker({
             opens: 'left',
             minDate: '{{$min_date}}',
             autoApply: true,
