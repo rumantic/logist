@@ -37,7 +37,7 @@ class Edit extends BaseComponent
             return abort(403);
         }
 
-        // $this->validate($this->getValidateRules($this->form_shape));
+        $this->validate($this->getValidateRules($this->form_shape));
 
         $model = $this->model;
         $model = $this->initModelValues($this->form_shape, $model);

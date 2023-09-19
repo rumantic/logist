@@ -11,9 +11,8 @@ class Create extends BaseComponent
 {
     use LivewireAlert;
     use WithFileUploads;
-    public $description;
-    public $station_start;
-    public $station_end;
+
+    public Order $model;
 
     protected $listeners = [
         'updateList' => 'render'
@@ -33,17 +32,13 @@ class Create extends BaseComponent
             return abort(403);
         }
 
-        $this->validate([
-            'station_start' => ['string', 'required'],
-            'station_end' => ['string', 'required'],
-            'description' => 'nullable',
-        ]);
+        $this->validate($this->getValidateRules($this->form_shape));
 
-        $order = new Order();
-        $order->station_start = $this->station_start;
-        $order->station_end = $this->station_end;
-        $order->description = $this->description;
-        $order->save();
+        $this->model = new Order();
+        $model = $this->model;
+        $model = $this->initModelValues($this->form_shape, $model);
+
+        $model->save();
 
         $this->emit('refreshDatatable');
         $this->emit('hideModal');
