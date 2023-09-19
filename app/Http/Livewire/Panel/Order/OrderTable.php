@@ -23,6 +23,7 @@ class OrderTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id');
+        $this->setDefaultSort('id', 'desc');
         $this->setDefaultReorderSort('id', 'desc');
         $this->setTdAttributes(function(Column $column, $row, $columnIndex, $rowIndex) {
             return [
@@ -41,25 +42,33 @@ class OrderTable extends DataTableComponent
         return [
             Column::make("Id", "id")
                 ->sortable(),
-            Column::make("Номер вагона", "id")
+            Column::make("Дата начала", "start_date")
                 ->format(function ($value) {
-                    return view('livewire.panel.order.fake')
-                        ->with('title', 123);
-                }),
-            Column::make("Дата отправления вагона", "id")
+                    return date('d.m.Y', strtotime($value));
+                })
+                ->sortable(),
+            Column::make("Дата завершения", "end_date")
                 ->format(function ($value) {
-                    return view('livewire.panel.order.fake')
-                        ->with('title', '20.09.2023');
-                }),
+                    return date('d.m.Y', strtotime($value));
+                })
+                ->sortable(),
+            Column::make(__('bap.station_start'), "station_start.name")
+                ->sortable(),
+
+            Column::make(__('bap.station_end'), "station_end.name")
+                ->sortable(),
+
+            Column::make(__('Грузоотправитель'), "company_source.name")
+                ->sortable(),
+            Column::make(__('Грузополучатель'), "company_destination.name")
+                ->sortable(),
+
+
             Column::make("Статус", "id")
                 ->format(function ($value) {
                     return view('livewire.panel.order.fake')
                         ->with('title', 'в пути');
                 }),
-            Column::make(__('bap.station_start'), "station_start")
-                ->sortable(),
-            Column::make(__('bap.station_end'), "station_end")
-                ->sortable(),
             Column::make("Статус операции", "id")
                 ->format(function ($value) {
                     return view('livewire.panel.order.fake')
