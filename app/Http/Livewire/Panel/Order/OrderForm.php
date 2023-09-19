@@ -12,9 +12,12 @@ class OrderForm {
             'daterange' => [
                 'title' => __('Период перевозки'),
                 'type' => Types::$DATE_RANGE,
-                'date_start' => 'date_start',
-                'date_end' => 'date_end',
+                'store' => false,
+                'date_start_model' => 'start_date',
+                'date_end_model' => 'end_date',
+                'validate' => ['string', 'nullable'],
             ],
+/*
             'transport_type' => [
                 'title' => __('Вид перевозки'),
                 'type' => Types::$SELECT,
@@ -99,6 +102,7 @@ class OrderForm {
                 'type' => Types::$INPUT,
                 'validate' => ['string', 'nullable'],
             ],
+            */
         ];
         return $form;
     }

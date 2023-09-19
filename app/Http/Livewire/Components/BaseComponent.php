@@ -13,19 +13,34 @@ class BaseComponent extends Component
     protected function initClassAttributes ( $form_shape, $model = null ): void
     {
         foreach ( $form_shape as $key => $item ) {
-            if ( !is_null($model) and isset($model->{$key}) ) {
-                $this->{$key} = $model->{$key};
-            } else {
-                $this->{$key} = null;
+            if ( !isset($item['store']) or $item['store']  ) {
+                if ( !is_null($model) and isset($model->{$key}) ) {
+                    $this->{$key} = $model->{$key};
+                } else {
+                    $this->{$key} = null;
+                }
             }
-            $this->initRelatedModels($key, $item);
+            $this->initRelatedModels($key, $item, $model);
         }
     }
 
-    protected function initRelatedModels ( $key, $item )
+    protected function initRelatedModels ( $key, $item, $model )
     {
         switch ( $item['type'] )
         {
+            case Types::$DATE_RANGE:
+                if ( !is_null($model) and isset($model->{$item['date_start_model']}) ) {
+                    $this->{$item['date_start_model']} = $model->{$item['date_start_model']};
+                } else {
+                    $this->{$item['date_start_model']} = null;
+                }
+
+                if ( !is_null($model) and isset($model->{$item['date_end_model']}) ) {
+                    $this->{$item['date_end_model']} = $model->{$item['date_end_model']};
+                } else {
+                    $this->{$item['date_end_model']} = null;
+                }
+                break;
             case Types::$SELECT:
                 if ( isset($item['options']) ) {
                     $this->form_options[$key] = $item['options'];
@@ -57,6 +72,17 @@ class BaseComponent extends Component
     {
         foreach ( $form_shape as $key => $item ) {
             switch ( $item['type'] ) {
+                case Types::$DATE_RANGE:
+                    $start_date = $item['date_start_model'];
+                    if ( isset($this->{$start_date}) ) {
+                        $model->{$start_date} = $this->{$start_date};
+                    }
+                    $end_date = $item['date_end_model'];
+                    if ( isset($this->{$end_date}) ) {
+                        $model->{$end_date} = $this->{$end_date};
+                    }
+                    break;
+
                 case Types::$CHECKBOX:
                     if ( empty($this->{$key}) ) {
                         $model->{$key} = 0;
@@ -67,7 +93,9 @@ class BaseComponent extends Component
                     $model->{$key} = $this->getInputValue($key, $this->{$key});
                     break;
                 default:
-                    $model->{$key} = $this->{$key};
+                    if ( isset($this->{$key}) ) {
+                        $model->{$key} = $this->{$key};
+                    }
             }
         }
         return $model;
@@ -82,7 +110,9 @@ class BaseComponent extends Component
     {
         $result = [];
         foreach ( $form_shape as $key => $item ) {
-            $result[$key] = $item['validate'];
+            if ( !isset($item['store']) or $item['store']  ) {
+                $result[$key] = $item['validate'];
+            }
         }
         return $result;
     }

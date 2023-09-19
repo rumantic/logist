@@ -4,10 +4,14 @@
         <div class="mb-3">
             @switch( $item['type'] )
                 @case(App\Form\Types::$DATE_RANGE)
-                    @include('livewire.form.daterangepicker',
+                    @include('livewire.form.date-range-picker',
                         [
                             'model_name' => $key,
                             'title' => $item['title'],
+                            'date_start_model' => $item['date_start_model'],
+                            'date_end_model' => $item['date_end_model'],
+                            'date_start_value' => date('m/d/Y', strtotime(${$item['date_start_model']})),
+                            'date_end_value' => date('m/d/Y', strtotime(${$item['date_end_model']})),
                             'message' => $message ?? null
                         ])
                     @break
