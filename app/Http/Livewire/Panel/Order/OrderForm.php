@@ -12,6 +12,8 @@ class OrderForm {
             'daterange' => [
                 'title' => __('Период перевозки'),
                 'type' => Types::$DATE_RANGE,
+                'date_start' => 'date_start',
+                'date_end' => 'date_end',
             ],
             'transport_type' => [
                 'title' => __('Вид перевозки'),
