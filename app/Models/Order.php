@@ -28,7 +28,7 @@ class Order extends Model
 
     public function destination_company(): \Illuminate\Database\Eloquent\Relations\belongsTo
     {
-        return $this->belongsTo(Company::class, 'destination_company', 'id');
+        return $this->belongsTo(Company::class, 'company_destination', 'id');
     }
     public function company_source(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

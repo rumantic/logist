@@ -50,7 +50,7 @@ class OrderForm {
                 'validate' => ['integer', 'required'],
                 'hasOne' => Company::class,
             ],
-            'destination_company' => [
+            'company_destination' => [
                 'title' => __('Грузополучатель'),
                 'type' => Types::$SELECT,
                 'validate' => ['integer', 'required'],
