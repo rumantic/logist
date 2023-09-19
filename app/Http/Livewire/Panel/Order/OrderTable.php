@@ -58,9 +58,10 @@ class OrderTable extends DataTableComponent
             Column::make(__('bap.station_end'), "station_end.name")
                 ->sortable(),
 
+
             Column::make(__('Грузоотправитель'), "company_source.name")
                 ->sortable(),
-            Column::make(__('Грузополучатель'), "company_destination.name")
+            Column::make(__('Грузополучатель'), "destination_company.name")
                 ->sortable(),
 
 
