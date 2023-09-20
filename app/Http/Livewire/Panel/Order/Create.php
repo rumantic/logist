@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Panel\Order;
 
 use App\Http\Livewire\Components\BaseComponent;
+use App\Http\Livewire\Panel\Order\Traits\AutocompleteTrait;
 use App\Models\Order;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;
@@ -11,6 +12,7 @@ class Create extends BaseComponent
 {
     use LivewireAlert;
     use WithFileUploads;
+    use AutocompleteTrait;
 
     public Order $model;
 
@@ -20,6 +22,8 @@ class Create extends BaseComponent
 
     public function __construct($id = null)
     {
+        $this->model = new Order();
+
         $form = new OrderForm();
         $this->form_shape = $form->get();
         $this->initClassAttributes($this->form_shape);
@@ -38,7 +42,6 @@ class Create extends BaseComponent
 
         $this->validate($this->getValidateRules($this->form_shape));
 
-        $this->model = new Order();
         $model = $this->model;
         $model = $this->initModelValues($this->form_shape, $model);
 

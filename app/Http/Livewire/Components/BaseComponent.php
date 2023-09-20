@@ -45,23 +45,41 @@ class BaseComponent extends Component
                 if ( isset($item['options']) ) {
                     $this->form_options[$key] = $item['options'];
                 } else {
-                    $this->form_options[$key] = $this->initSelectOptions($item['hasOne']);
+                    $this->form_options[$key] = $this->initSelectOptions($item, $model);
                 }
+
+                if ( isset($item['autocomplete']) and $item['autocomplete'] ) {
+                    $this->{$key.'_autocomplete'} = '';
+                    if ( isset($model) ) {
+                        $this->{$key.'_autocomplete'} = $model->{$key.'_relation'}->name;
+                    }
+                }
+
                 break;
             default:
         }
     }
 
-    protected function initSelectOptions ( $model )
+    protected function initSelectOptions ( $item, $model, $search_key = null, $term = null )
     {
-        $items = $model::limit(10)->get();
+
+        if ( $search_key ) {
+            $get_records = $item['hasOne']::where($search_key, 'like', '%'.$term.'%');
+        } else {
+            $get_records = $item['hasOne']::where('id', '>', 0);
+        }
+        if ( isset($item['order']) ) {
+            $get_records->orderBy($item['order']);
+        }
+        $items = $get_records->limit(10)->get();
+
         $result = [];
 
         if ( $items ) {
-            foreach ( $items as $item ) {
+            foreach ( $items as $f_item ) {
                 $result[] = [
-                    'value' => $item->id,
-                    'description'=> $item->name
+                    'value' => $f_item->id,
+                    'description'=> $f_item->name
                 ];
             }
         }

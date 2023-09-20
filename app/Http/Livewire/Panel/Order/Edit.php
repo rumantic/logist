@@ -3,17 +3,16 @@
 namespace App\Http\Livewire\Panel\Order;
 
 use App\Http\Livewire\Components\BaseComponent;
-use App\Models\Category;
+use App\Http\Livewire\Panel\Order\Traits\AutocompleteTrait;
 use App\Models\Order;
-use Faker\Provider\Base;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class Edit extends BaseComponent
 {
     use LivewireAlert;
     use WithFileUploads;
+    use AutocompleteTrait;
     public Order $model;
 
     public function __construct($id = null)

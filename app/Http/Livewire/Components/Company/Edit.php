@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Components\Company;
 use App\Http\Livewire\Components\BaseComponent;
 use App\Models\Company;
 use App\Models\CompanyType;
+use App\Models\Stantion;
 use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;

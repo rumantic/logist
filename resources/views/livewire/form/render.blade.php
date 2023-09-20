@@ -20,6 +20,7 @@
                         [
                             'model_name' => $key,
                             'title' => $item['title'],
+                            'autocomplete' => $item['autocomplete'] ?? false,
                             'message' => $message ?? null
                         ])
                     @break

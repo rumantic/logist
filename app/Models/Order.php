@@ -20,18 +20,40 @@ class Order extends Model
         return $this->belongsTo(Stantion::class, 'station_start', 'id');
     }
 
+    public function station_start_relation(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Stantion::class, 'station_start', 'id');
+    }
+
+
     public function station_end(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(StantionDuplicate::class, 'station_end', 'id');
     }
 
+    public function station_end_relation(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(StantionDuplicate::class, 'station_end', 'id');
+    }
 
-    public function destination_company(): \Illuminate\Database\Eloquent\Relations\belongsTo
+    public function company_destination(): \Illuminate\Database\Eloquent\Relations\belongsTo
     {
         return $this->belongsTo(Company::class, 'company_destination', 'id');
     }
+
+    public function company_destination_relation(): \Illuminate\Database\Eloquent\Relations\belongsTo
+    {
+        return $this->belongsTo(Company::class, 'company_destination', 'id');
+    }
+
     public function company_source(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(CompanyDuplicate::class, 'company_source', 'id');
     }
+
+    public function company_source_relation(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(CompanyDuplicate::class, 'company_source', 'id');
+    }
+
 }
