@@ -64,74 +64,18 @@ class OrderTable extends DataTableComponent
             Column::make(__('Грузополучатель'), "destination_company.name")
                 ->sortable(),
 
+            Column::make(__('Согласование ставки'), "bid")
+                ->sortable(),
 
-            Column::make("Статус", "id")
-                ->format(function ($value) {
-                    return view('livewire.panel.order.fake')
-                        ->with('title', 'в пути');
-                }),
-            Column::make("Статус операции", "id")
-                ->format(function ($value) {
-                    return view('livewire.panel.order.fake')
-                        ->with('title', 'ожидает оплаты');
-                }),
-            Column::make("Цена перевозки", "id")
-                ->format(function ($value) {
-                    return view('livewire.panel.order.fake')
-                        ->with('title', '2 500 000');
-                }),
-            Column::make("Оплата", "id")
-                ->format(function ($value) {
-                    return view('livewire.panel.order.fake')
-                        ->with('title', '500 000');
-                }),
-            Column::make("Наличие простоя", "id")
-                ->format(function ($value) {
-                    return view('livewire.panel.order.fake')
-                        ->with('title', 'нет');
-                }),
-            /*
-            Column::make("Created at", "created_at")
+            Column::make(__('Вес'), "weight")
                 ->sortable(),
-            Column::make("Updated at", "updated_at")
-                ->sortable(),
-            */
+
             Column::make("actions", "id")
                 ->format(function ($value, $row) {
                     return view('livewire.panel.order.actions')
                         ->with('id', $value)
                         ->with('order', $row);
                 }),
-/*
-            ButtonGroupColumn::make('Actions')
-                ->unclickable()
-                ->attributes(function ($row) {
-                    return [
-                        'class' => 'space-x-2',
-                    ];
-                })
-                ->buttons([
-                    LinkColumn::make('My Link 1')
-                        ->title(fn ($row) => 'Link 1')
-                        ->location(fn ($row) => 'https://'.$row->id.'google2.com')
-                        ->view('livewire.panel.order.actions'),
-                    LinkColumn::make('My Link 2')
-                        ->title(fn ($row) => 'Link 2')
-                        ->location(fn ($row) => 'https://'.$row->id.'google2.com')
-                        ->attributes(function ($row) {
-                            return [
-                                'class' => 'underline text-blue-500',
-                            ];
-                        }),
-                    LinkColumn::make('My Link 3')
-                        ->title(fn ($row) => 'Link 3')
-                        ->location(fn ($row) => 'https://'.$row->id.'google3.com')
-                        ->attributes(function ($row) {
-                            return [
-                                'class' => 'underline text-blue-500',
-                            ];
-                        }),
-                ]),*/
         ];
     }
 
