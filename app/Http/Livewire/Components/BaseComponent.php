@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Components;
 
-use App\Form\Types;
+use Sitebill\Types\Form\Inputs as Types;
 use Livewire\Component;
 
 class BaseComponent extends Component

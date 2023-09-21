@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Livewire\Panel\Order;
 
-use App\Form\Types;
+use Sitebill\Types\Form\Inputs as Types;
 use App\Models\Company;
 use App\Models\Stantion;
 

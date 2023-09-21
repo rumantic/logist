@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Components\Company;
 
-use App\Form\Types;
+use Sitebill\Types\Form\Inputs as Types;
 use App\Models\CompanyType;
 
 class CompanyForm

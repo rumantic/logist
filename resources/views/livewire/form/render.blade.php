@@ -3,7 +3,7 @@
     <div class="col col-md-6 col-xl-4">
         <div class="mb-3">
             @switch( $item['type'] )
-                @case(App\Form\Types::$DATE_RANGE)
+                @case(Sitebill\Types\Form\Inputs::$DATE_RANGE)
                     @include('livewire.form.date-range-picker',
                         [
                             'model_name' => $key,
@@ -15,7 +15,7 @@
                             'message' => $message ?? null
                         ])
                     @break
-                @case(App\Form\Types::$SELECT)
+                @case(Sitebill\Types\Form\Inputs::$SELECT)
                     @include('livewire.form.select',
                         [
                             'model_name' => $key,
@@ -24,7 +24,7 @@
                             'message' => $message ?? null
                         ])
                     @break
-                @case(App\Form\Types::$CHECKBOX)
+                @case(Sitebill\Types\Form\Inputs::$CHECKBOX)
                     @include('livewire.form.checkbox',
                         [
                             'model_name' => $key,
@@ -32,7 +32,7 @@
                             'message' => $message ?? null
                         ])
                     @break
-                @case(App\Form\Types::$TEXTAREA)
+                @case(Sitebill\Types\Form\Inputs::$TEXTAREA)
                     @include('livewire.form.textarea',
                         [
                             'model_name' => $key,
