@@ -1,4 +1,4 @@
-@include('livewire.form.modal', [
+@include('sitebill-livewire::form.modal', [
     'event' => 'create',
     'title' => __('Новая компания'),
     'form_shape' => $form_shape,

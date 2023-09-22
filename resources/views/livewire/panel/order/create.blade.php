@@ -1,4 +1,4 @@
-@include('livewire.form.modal', [
+@include('sitebill-livewire::form.modal', [
     'event' => 'create',
     'title' => __('bap.create_order'),
     'form_shape' => $form_shape,
