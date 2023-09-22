@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire\Panel\Order;
 
-use App\Http\Livewire\Components\BaseComponent;
 use App\Http\Livewire\Panel\Order\Traits\AutocompleteTrait;
 use App\Models\Order;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;
+use Sitebill\Livewire\App\Http\Components\BaseComponent;
 
 class Create extends BaseComponent
 {

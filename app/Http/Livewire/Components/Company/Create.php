@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire\Components\Company;
 
-use App\Http\Livewire\Components\BaseComponent;
 use App\Models\Company;
 use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;
+use Sitebill\Livewire\App\Http\Components\BaseComponent;
 
 class Create extends BaseComponent
 {

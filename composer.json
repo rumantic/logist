@@ -46,7 +46,8 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Sitebill\\Types\\": "packages/sitebill/types/src"
+            "Sitebill\\Types\\": "packages/sitebill/types/src",
+            "Sitebill\\Livewire\\": "packages/sitebill/livewire/src"
         }
     },
     "autoload-dev": {
