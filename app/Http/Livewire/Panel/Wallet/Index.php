@@ -52,6 +52,6 @@ class Index extends Component
 
         $wallets = collect($wallets);
 
-        return view('livewire.panel.wallet.index', compact('wallets'))->layout('layouts.panel');
+        return view('livewire.panel.wallet.index', compact('wallets'))->layout('sitebill-livewire::layouts.panel');
     }
 }

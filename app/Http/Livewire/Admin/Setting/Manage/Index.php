@@ -25,6 +25,6 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.admin.setting.manage.index')->layout('layouts.admin');
+        return view('livewire.admin.setting.manage.index')->layout('sitebill-livewire::layouts.admin');
     }
 }

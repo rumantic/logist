@@ -9,6 +9,6 @@ class Index extends Component
     public function render()
     {
         $userWallets = UserWallet::where('user_id', auth()->user()->id)->get();
-        return view('livewire.panel.user.wallet.index', compact('userWallets'))->layout('layouts.panel');
+        return view('livewire.panel.user.wallet.index', compact('userWallets'))->layout('sitebill-livewire::layouts.panel');
     }
 }

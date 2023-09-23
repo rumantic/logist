@@ -71,6 +71,6 @@ class Mobile extends Component
 
     public function render()
     {
-        return view('livewire.panel.user.mobile')->layout('layouts.panel');
+        return view('livewire.panel.user.mobile')->layout('sitebill-livewire::layouts.panel');
     }
 }

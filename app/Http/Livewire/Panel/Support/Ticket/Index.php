@@ -104,6 +104,6 @@ class Index extends Component
     public function render()
     {
         $tickets = Ticket::with(['category'])->filter(['search' => $this->search])->where('user_id', auth()->user()->id)->orderBy($this->sortColumn, $this->sortDirection)->paginate($this->perPage);
-        return view('livewire.panel.support.ticket.index', compact('tickets'))->layout('layouts.panel');
+        return view('livewire.panel.support.ticket.index', compact('tickets'))->layout('sitebill-livewire::layouts.panel');
     }
 }

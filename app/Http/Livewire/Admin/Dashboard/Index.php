@@ -12,6 +12,6 @@ class Index extends Component
             return abort(403);
         }
 
-        return view('livewire.admin.dashboard.index')->layout('layouts.admin');
+        return view('livewire.admin.dashboard.index')->layout('sitebill-livewire::layouts.admin');
     }
 }

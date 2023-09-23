@@ -37,6 +37,6 @@ class Index extends Component
         if(!auth()->user()->can('company_index')) {
             return abort(403);
         }
-        return view('livewire.components.company.index')->layout('layouts.panel');
+        return view('livewire.components.company.index')->layout('sitebill-livewire::layouts.panel');
     }
 }

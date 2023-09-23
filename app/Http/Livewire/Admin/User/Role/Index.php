@@ -155,6 +155,6 @@ class Index extends Component
         }
 
         $roles = Role::where('name', 'LIKE', '%' . $this->search . '%')->orderBy($this->sortColumn, $this->sortDirection)->paginate($this->perPage);
-        return view('livewire.admin.user.role.index', compact('roles'))->layout('layouts.admin');
+        return view('livewire.admin.user.role.index', compact('roles'))->layout('sitebill-livewire::layouts.admin');
     }
 }

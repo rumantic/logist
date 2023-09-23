@@ -111,6 +111,6 @@ class Index extends Component
             return abort(403);
         }
         $articles = Order::filter(['search' => $this->search])->orderBy($this->sortColumn, $this->sortDirection)->paginate($this->perPage);
-        return view('livewire.panel.order.index', compact('articles'))->layout('layouts.panel');
+        return view('livewire.panel.order.index', compact('articles'))->layout('sitebill-livewire::layouts.panel');
     }
 }

@@ -73,6 +73,6 @@ class View extends Component
 
     public function render()
     {
-        return view('livewire.panel.support.ticket.view')->layout('layouts.panel');
+        return view('livewire.panel.support.ticket.view')->layout('sitebill-livewire::layouts.panel');
     }
 }

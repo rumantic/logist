@@ -26,6 +26,6 @@ class PanelLayout extends Component
      */
     public function render()
     {
-        return view('layouts.panel');
+        return view('sitebill-livewire::layouts.panel');
     }
 }

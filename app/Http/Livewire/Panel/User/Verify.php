@@ -79,6 +79,6 @@ class Verify extends Component
             $verify->save();
         }
 
-        return view('livewire.panel.user.verify', ['random_string'=> $verify->random_string, 'verify' => $verify])->layout('layouts.panel');
+        return view('livewire.panel.user.verify', ['random_string'=> $verify->random_string, 'verify' => $verify])->layout('sitebill-livewire::layouts.panel');
     }
 }
