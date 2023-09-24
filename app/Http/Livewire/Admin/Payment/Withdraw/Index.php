@@ -8,6 +8,6 @@ class Index extends Component
 {
     public function render()
     {
-        return view('livewire.admin.payment.withdraw.index')->layout('sitebill-livewire::layouts.admin');
+        return view('livewire.admin.payment.withdraw.index')->layout('sitebill-livewire::layouts.panel');
     }
 }

@@ -160,6 +160,6 @@ class Index extends Component
 
         $products = Product::filter(['search' => $this->search])->orderBy($this->sortColumn, $this->sortDirection)->paginate($this->perPage);
 
-        return view('livewire.admin.shop.product.index', compact('products'))->layout('sitebill-livewire::layouts.admin');
+        return view('livewire.admin.shop.product.index', compact('products'))->layout('sitebill-livewire::layouts.panel');
     }
 }

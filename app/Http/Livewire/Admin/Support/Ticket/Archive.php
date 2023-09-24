@@ -117,6 +117,6 @@ class Archive extends Component
         }
 
         $tickets = Ticket::with(['user', 'category'])->filter(['search' => $this->search])->whereNotIn('status', ['new', 'customer'])->orderBy($this->sortColumn, $this->sortDirection)->paginate($this->perPage);
-        return view('livewire.admin.support.ticket.index', compact('tickets'))->layout('sitebill-livewire::layouts.admin');
+        return view('livewire.admin.support.ticket.index', compact('tickets'))->layout('sitebill-livewire::layouts.panel');
     }
 }

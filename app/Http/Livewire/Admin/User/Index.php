@@ -157,6 +157,6 @@ class Index extends Component
             return abort(403);
         }
         $users = User::filter(['search' => $this->search])->orderBy($this->sortColumn, $this->sortDirection)->paginate($this->perPage);
-        return view('livewire.admin.user.index', compact('users'))->layout('sitebill-livewire::layouts.admin');
+        return view('livewire.admin.user.index', compact('users'))->layout('sitebill-livewire::layouts.panel');
     }
 }
