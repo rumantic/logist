@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Facade;
 
 $local_env = $_SERVER['DOCUMENT_ROOT'].'/../.env';
 if ( file_exists($local_env) ) {
+    echo $local_env;
+    exit;
     app()->loadEnvironmentFrom($local_env);
 }
 return [
