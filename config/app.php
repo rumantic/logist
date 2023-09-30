@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Facade;
 
+echo $_SERVER['DOCUMENT_ROOT'];
+exit;
 return [
 
     /*
@@ -54,7 +56,7 @@ return [
     |
     */
 
-    'url' => request()->root(),
+    'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL'),
 
