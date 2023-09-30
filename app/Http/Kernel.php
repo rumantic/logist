@@ -74,4 +74,15 @@ class Kernel extends HttpKernel
         'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
         'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class
     ];
+
+    public function bootstrap()
+    {
+        $local_env = $_SERVER['DOCUMENT_ROOT'].'/../.env';
+        if ( file_exists($local_env) ) {
+            app()->loadEnvironmentFrom($local_env);
+            echo env('APP_URL').'<br>';
+            echo env('DB_DATABASE').'<br>';
+        }
+        parent::bootstrap();
+    }
 }
