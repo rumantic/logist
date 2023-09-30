@@ -51,5 +51,9 @@ $app->singleton(
 | from the actual running of the application and sending responses.
 |
 */
+$local_env = $_SERVER['DOCUMENT_ROOT'].'/../.env';
+if ( file_exists($local_env) ) {
+    $app->loadEnvironmentFrom($local_env);
+}
 
 return $app;
