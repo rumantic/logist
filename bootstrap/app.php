@@ -52,8 +52,14 @@ $app->singleton(
 |
 */
 $local_env = $_SERVER['DOCUMENT_ROOT'].'/../.env';
-if ( file_exists($local_env) ) {
-    $app->loadEnvironmentFrom($local_env);
+
+if (file_exists($local_env)) {
+    $dotenv = Dotenv\Dotenv::createImmutable($local_env);
+    try {
+        $dotenv->load();
+    } catch (\Dotenv\Exception\InvalidPathException $e) {
+        // No custom .env file found for this domain
+    }
 }
 
 return $app;
