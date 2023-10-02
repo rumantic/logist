@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Routing\ViewController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 /*
@@ -14,6 +16,18 @@ use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 |
 */
 
+
+Route::get('/', function () {
+    return Inertia::render('Dashboard');
+})->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/users', [ViewController::class,'users'])->name('users');
+    Route::get('/roles', [ViewController::class,'roles'])->name('roles');
+    Route::get('/permissions', [ViewController::class,'permissions'])->name('permissions');
+});
+
+/*
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['referral']], function() {
 
@@ -97,6 +111,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['re
 
 if ( config('fortify.login_email_confirm') ) {
     require_once __DIR__.'/fortify/routes.php';
-}
+}*/
 
 
